@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado de Pago</title>
+</head>
+<body>
+    <h1>Pago {{ status }}</h1>
+    
+    <!-- Datos básicos -->
+    <p><strong>Monto:</strong> ${{ amount|default:"N/A" }}</p>
+    <p><strong>Orden de compra:</strong> {{ buy_order|default:"N/A" }}</p>
+    <p><strong>Fecha:</strong> {{ transaction_date|default:"N/A" }}</p>
+    
+    <!-- Debug (opcional) -->
+    <details>
+        <summary>Datos técnicos</summary>
+        <pre>{{ response_data|pprint }}</pre>
+    </details>
+    
+    <a href="/payments/">Volver</a>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prueba WebPay Plus</title>
+</head>
+<body>
+    <h1>Simulador de Pago WebPay</h1>
+    <button id="payButton">Pagar $10.000 CLP</button>
+
+    <script>
+        document.getElementById('payButton').addEventListener('click', async () => {
+            try {
+                const response = await fetch('/payments/create/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === 'error') {
+                    throw new Error(data.message);
+                }
+        
+                // Debug
+                console.log("Datos recibidos:", data);
+                
+                // Redirección a WebPay
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = data.url;
+                form.innerHTML = `<input type="hidden" name="token_ws" value="${data.token}">`;
+                document.body.appendChild(form);
+                form.submit();
+                
+            } catch (error) {
+                console.error("Error completo:", error);
+                alert(`Error: ${error.message}`);
+            }
+        });
+        </script>
+</body>
+</html>
