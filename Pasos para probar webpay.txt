@@ -1,0 +1,19 @@
+📌 Pasos para Probar Correctamente
+Ingresa a WebPay (redirección desde tu sitio).
+
+En el formulario de WebPay:
+
+Selecciona una tarjeta de prueba: (ej: Visa 4051 8856 0044 6623).
+
+Fecha de expiración: Cualquier fecha futura.
+
+CVV: 123
+
+Datos confirmación
+
+RUT: 11.111.111-1
+
+Clave: 123 (o cualquier número).
+
+
+
